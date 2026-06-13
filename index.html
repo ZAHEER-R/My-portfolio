@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Zaheer Rachakula , Software Engineer & Entrepreneur">
+  <meta name="description"
+    content="Zaheer Rachakula - Software Engineer & Developer Portfolio. core programming, and tech YouTube content.">
+  <title>Zaheer Rachakula | Engineer &amp; Developer</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon/.jpg/.png" href="profile.jpg">
+
+  <!-- Google Fonts: Inter, Outfit & cinematic title font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Tailwind CSS v4 Browser Compiler (Play CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Tailwind Theme Configuration -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary-orange: #FF3D00;
+      --color-primary-pink: #FF0066;
+      --color-primary-purple: #7C3AED;
+      --color-primary-violet: #A855F7;
+      
+      --color-bg-dark: #050505;
+      --color-card-dark: #0C0C0C;
+      --color-text-light: #FFFFFF;
+      --color-text-secondary: #B3B3B3;
+      --color-border-light: rgba(255, 255, 255, 0.08);
+      
+      --radius-custom: 32px;
+      --font-display: "Outfit", sans-serif;
+      --font-sans: "Inter", sans-serif;
+    }
+  </style>
+
+  <!-- Link to Custom Vanilla CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-bg-dark text-text-light selection:bg-primary-orange/30 selection:text-white">
+
+  <!-- Floating Background Glows & Sunlight -->
+  <div class="sunlight-flare"></div>
+  <div class="blur-circle w-[350px] md:w-[600px] h-[350px] md:h-[600px] bg-primary-orange/15 left-[-10%] top-[10%]">
+  </div>
+  <div class="blur-circle w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-primary-purple/10 right-[-10%] top-[40%]">
+  </div>
+  <div class="blur-circle w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary-pink/10 left-[15%] bottom-[10%]">
+  </div>
+
+  <!-- Sunlight Circular Particles Container -->
+  <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+  <!-- Focus visual circle -->
+  <div id="focus-circle" class="focus-circle"></div>
+
+  <!-- Cinematic Page Loader -->
+  <div id="loader">
+    <!-- Background lights and dust widgets -->
+    <div id="loader-effects-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Exploded particles container -->
+    <div id="loader-blast-container" class="absolute inset-0 pointer-events-none z-20"></div>
+
+    <div class="loader-stage flex flex-col items-center justify-start relative z-10 w-full h-full">
+      <!-- Logos Row (Horizontal alignment target) -->
+      <div id="loader-logos-row" class="flex items-center justify-center gap-6 h-24 mb-12 relative w-full px-4"
+        aria-hidden="true"></div>
+
+      <!-- Merged Central Logo (hidden initially) -->
+      <div id="loader-merged-logo"
+        class="absolute w-24 h-24 rounded-full opacity-0 flex items-center justify-center z-15" aria-hidden="true">
+        <i class="fa-solid fa-code text-white text-4xl"></i>
+      </div>
+
+      <!-- Letter Stamp Target Container -->
+      <div id="intro-name-container" class="intro-letter-container mb-6"></div>
+
+      <p id="loader-status" class="text-xs text-text-secondary opacity-0 font-display uppercase tracking-widest mt-4">
+        Assembling environment...</p>
+    </div>
+  </div>
+
+  <!-- Sticky Premium Navigation Header -->
+  <header class="sticky top-0 z-50 w-full border-b border-border-light bg-bg-dark/65 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
+      <a href="#about" class="group flex items-center gap-2 text-xl font-bold tracking-tight text-white font-display">
+        <span class="header-name font-black tracking-tight text-white">ZAHEER RACHAKULA</span>
+        <span
+          class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-primary-orange">Engineer</span>
+      </a>
+
+      <!-- Desktop Navigation Menu (Contact link removed) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-text-secondary">
+        <a href="#about" class="hover:text-white transition-colors duration-200">About</a>
+        <a href="#projects" class="hover:text-white transition-colors duration-200">Projects</a>
+        <a href="#skills" class="hover:text-white transition-colors duration-200">Skills</a>
+        <a href="#articles" class="hover:text-white transition-colors duration-200">Articles</a>
+      </nav>
+
+      <!-- Quick Action Button -->
+      <div class="flex items-center gap-4">
+        <a href="#contact" id="header-contact-btn"
+          class="scroll-fill-btn hidden sm:inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-bold transition-all duration-300 shadow-lg">
+          Get in Touch
+        </a>
+        <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars-staggered text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu"
+      class="hidden md:hidden w-full bg-bg-dark/95 border-b border-border-light px-6 py-4 flex flex-col gap-4 text-sm font-medium animate-fade-in">
+      <a href="#about"
+        class="mobile-nav-link text-text-secondary hover:text-white py-2 block border-b border-white/5">About</a>
+      <a href="#projects"
+        class="mobile-nav-link text-text-secondary hover:text-white py-2 block border-b border-white/5">Projects</a>
+      <a href="#skills"
+        class="mobile-nav-link text-text-secondary hover:text-white py-2 block border-b border-white/5">Skills</a>
+      <a href="#articles"
+        class="mobile-nav-link text-text-secondary hover:text-white py-2 block border-b border-white/5">Articles</a>
+    </div>
+  </header>
+
+  <!-- Main Grid Container -->
+  <main class="mx-auto max-w-7xl px-4 pt-12 pb-8 md:px-8 md:pt-20 md:pb-16 relative z-10">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xl:gap-5 auto-rows-[minmax(320px,_auto)] items-stretch">
+
+      <!-- 1. HERO CARD -->
+      <section id="about"
+        class="lg:col-span-1 md:col-span-2 glass-card hero-gradient spotlight border-beam p-8 flex flex-col justify-between min-h-[360px]">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <!-- Opportunities Badge -->
+            <span
+              class="opp-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium cursor-pointer">
+              <span class="w-2 h-2 rounded-full bg-green-400 pulse-green"></span>
+              Open to Opportunities
+            </span>
+            <i class="fa-solid fa-code text-primary-orange text-lg"></i>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight font-display">
+            Hi, I'm <span class="shimmer-text">Zaheer Rachakula</span>
+          </h1>
+          <h2 class="text-xl md:text-2xl font-semibold text-white/90 mb-4 font-display">
+            Engineer &amp; Developer
+          </h2>
+          <p class="text-text-secondary text-sm md:text-base max-w-xl leading-relaxed mb-6">
+            I am a dedicated software engineer and Entrepreneur specializing in core software design, automation, and
+            backend systems. As a YouTube creator sharing insights under <span class="text-white font-medium">Sai
+              Rachakula</span>, I bridge programming concepts with lifestyle and tech media. Focused on core engineering
+            foundations and building modular code bases.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mt-auto">
+          <span
+            class="tag-engineer px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-white/80 cursor-pointer"><i
+              class="fa-solid fa-gear text-primary-orange mr-1"></i> Engineer</span>
+          <span
+            class="tag-developer px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-white/80 cursor-pointer"><i
+              class="fa-solid fa-code text-primary-pink mr-1"></i> Developer</span>
+          <span
+            class="tag-yt px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-white/80 cursor-pointer"><i
+              class="fa-brands fa-youtube text-red-500 mr-1"></i> YT Creator</span>
+        </div>
+      </section>
+
+      <!-- 2. GITHUB CARD -->
+      <div id="github-activity-card"
+        class="lg:col-span-1 md:col-span-1 glass-card spotlight border-beam p-6 flex flex-col justify-between min-h-[400px]">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">GitHub Activity</span>
+            <i class="fa-brands fa-github text-white text-xl"></i>
+          </div>
+
+          <div class="space-y-4 my-auto">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-3">
+                <span id="repo-count" class="text-3xl font-extrabold font-display text-white">0</span>
+                <p class="text-xs text-text-secondary mt-0.5">Repositories</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-3">
+                <span id="contribution-count" class="text-3xl font-extrabold font-display text-white">0</span>
+                <p class="text-xs text-text-secondary mt-0.5">Contributions (YTD)</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-[10px] uppercase tracking-wider text-text-secondary">
+              <div class="rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-center">
+                <span class="block text-white font-semibold text-sm normal-case">18</span>
+                Stars
+              </div>
+              <div class="rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-center">
+                <span class="block text-white font-semibold text-sm normal-case">9</span>
+                PRs
+              </div>
+              <div class="rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-center">
+                <span class="block text-white font-semibold text-sm normal-case">14</span>
+                Streak
+              </div>
+            </div>
+
+            <div class="github-mini-graph" aria-label="GitHub activity chart">
+              <span style="height: 28%"></span>
+              <span style="height: 52%"></span>
+              <span style="height: 36%"></span>
+              <span style="height: 70%"></span>
+              <span style="height: 44%"></span>
+              <span style="height: 82%"></span>
+              <span style="height: 58%"></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://github.com/zaheer-r" target="_blank"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-primary-orange transition-colors mt-4 px-4 py-3 rounded-xl bg-white/5 border border-white/10 justify-center">
+          View Profile <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- 3. SOCIAL CARD (Gmail, YouTube, Instagram) -->
+      <div id="socials-card" style="opacity:100%;"
+        class="border-beam lg:col-span-1 md:col-span-1 glass-card spotlight hover-glow p-6 flex flex-col justify-between min-h-[400px]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Connect</span>
+          <i class="fa-solid fa-hashtag text-primary-purple text-lg"></i>
+        </div>
+
+        <p class="text-sm text-text-secondary leading-relaxed mb-4">
+          Reach me for code, collabs, and project ideas. I usually respond fastest on Gmail and Instagram.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 my-auto">
+          <a href="mailto:zaheerrachakula@gmail.com"
+            class="social-gradient-btn social-gmail w-full py-5 rounded-2xl border border-white/10 flex flex-col items-center justify-center transition-all duration-300"
+            aria-label="Gmail">
+            <i class="fa-solid fa-envelope text-2xl"></i>
+            <span class="text-[10px] font-semibold mt-1">Gmail</span>
+          </a>
+          <a href="https://www.instagram.com/mr._xhauster" target="_blank"
+            class="social-gradient-btn social-instagram w-full py-5 rounded-2xl border border-white/10 flex flex-col items-center justify-center transition-all duration-300"
+            aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-2xl"></i>
+            <span class="text-[10px] font-semibold mt-1">Zaheer R</span>
+          </a>
+          <a href="https://youtube.com/@sai_rachakula" target="_blank"
+            class="social-gradient-btn social-youtube w-full py-5 rounded-2xl border border-white/10 flex flex-col items-center justify-center transition-all duration-300"
+            aria-label="YouTube">
+            <i class="fa-brands fa-youtube text-2xl"></i>
+            <span class="text-[10px] font-semibold mt-1">@sairachakula</span>
+          </a>
+        </div>
+
+        <p class="text-[10px] text-text-secondary mt-2 text-center">Open to collaboration, channel inquiries, and
+          freelance work</p>
+      </div>
+
+      <!-- 4. PROFILE CARD -->
+      <div id="profile-picture-card" style="opacity: 100%;"
+        class="border-beam hero-gradient  profile-card-hover lg:col-span-1 md:col-span-1 glass-card spotlight p-6 flex flex-col items-center justify-center min-h-[280px]">
+        <div
+          class="relative w-40 h-40 md:w-44 md:h-44 rounded-full overflow-hidden border border-white/10 shadow-2xl animate-float">
+          <img src="profile.jpg" alt="Zaheer Rachakula Portrait"
+            class="w-full h-full object-cover object-center scale-105 hover:scale-110 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        </div>
+        <p class="text-xs text-text-secondary mt-4 font-semibold font-display tracking-wider">ZAHEER RACHAKULA</p>
+      </div>
+
+
+      <!-- 5. FEATURED PROJECT CARD (Z-VITPYQ, Tripigo, 5th Pillar VIT) -->
+      <section id="projects"
+        class="lg:col-span-1 md:col-span-2 glass-card project-gradient border-beam p-8 min-h-[420px] flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wider text-white/70 font-bold">Featured Projects</span>
+          <div class="flex gap-2">
+            <button
+              class="swiper-prev-btn w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all text-xs"
+              aria-label="Previous Project">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              class="swiper-next-btn w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all text-xs"
+              aria-label="Next Project">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper project-swiper w-full my-auto">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 1: Z-VITPYQ -->
+            <div
+              class="swiper-slide grid gap-6 items-center md:grid-cols-[minmax(0,1fr)_minmax(280px,0.95fr)] md:items-stretch">
+              <div class="space-y-4">
+                <span
+                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white">VIT
+                  PYQ Portal</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white font-display">Z-VITPYQ Platform</h3>
+                <p class="text-white/80 text-xs leading-relaxed">
+                  Z-VITPYQ is a comprehensive platform designed for VIT students to access, share, and manage Previous
+                  Year Question papers. The platform gamifies contributions, rewarding uploads with ranks, points, and
+                  profile statistics.
+                </p>
+                <div class="flex gap-3 pt-2">
+                  <a href="https://vitpyqpapers.in" target="_blank"
+                    class="launch-app-btn px-4 py-2 rounded-xl font-bold text-xs">Launch App <i
+                      class="fa-solid fa-arrow-up-right-from-square ml-0.5 text-[9px]"></i></a>
+                  <a href="https://github.com/zaheer-r/vitpyqfinal" target="_blank"
+                    class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 font-bold text-xs text-white transition-all"><i
+                      class="fa-brands fa-github mr-1"></i> Repository</a>
+                </div>
+              </div>
+              <div style="transform:scale(0.8);padding-left:10%; class=" aspect-video rounded-2xl overflow-hidden border
+                border-white/10 bg-neutral-900/50 shadow-inner flex items-center justify-center md:justify-self-end
+                md:min-h-[240px]">
+                <div class="text-center p-6">
+                  <i class="fa-solid fa-graduation-cap text-primary-orange text-4xl mb-3"></i>
+                  <div class="text-xs text-white/50">Z-VITPYQ Gamified Dashboard</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Tripigo -->
+            <div
+              class="swiper-slide grid gap-6 items-center md:grid-cols-[minmax(0,1fr)_minmax(280px,0.95fr)] md:items-stretch">
+              <div class="space-y-4">
+                <span
+                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white">AI
+                  Travel Planner</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white font-display">Tripigo</h3>
+                <p class="text-white/80 text-xs leading-relaxed">
+                  Tripigo is a travel planning application leveraging artificial intelligence to offer personalized
+                  itineraries, Leaflet mapping routes, budget visualization grids, collaborative trip lists, and
+                  multi-currency expense alerts.
+                </p>
+                <div class="flex gap-3 pt-2">
+                  <a href="https://tripigo.lovable.app" target="_blank"
+                    class="launch-app-btn px-4 py-2 rounded-xl font-bold text-xs">Launch App <i
+                      class="fa-solid fa-arrow-up-right-from-square ml-0.5 text-[9px]"></i></a>
+                  <a href="https://github.com/zaheer-r/tripigo" target="_blank"
+                    class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 font-bold text-xs text-white transition-all"><i
+                      class="fa-brands fa-github mr-1"></i> Repository</a>
+                </div>
+              </div>
+              <div style="transform:scale(0.8);padding-left:10%; class=" aspect-video rounded-2xl overflow-hidden border
+                border-white/10 bg-neutral-900/50 shadow-inner flex items-center justify-center md:justify-self-end
+                md:min-h-[240px]">
+                <div class="text-center p-6">
+                  <i class="fa-solid fa-plane-departure text-primary-pink text-4xl mb-3"></i>
+                  <div class="text-xs text-white/50">Tripigo Trip Engine Dashboard</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: 5th Pillar VIT -->
+            <div
+              class="swiper-slide grid gap-6 items-center md:grid-cols-[minmax(0,1fr)_minmax(280px,0.95fr)] md:items-stretch">
+              <div class="space-y-4">
+                <span
+                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-white">Official
+                  Society Page</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white font-display">5th Pillar VIT</h3>
+                <p class="text-white/80 text-xs leading-relaxed">
+                  Official website for the 5th Pillar VIT student-led chapter. Built with responsive layouts, event
+                  registration triggers, Google sheets APIs, anti-bribery modules, legal FAQs, and cookie popups.
+                </p>
+                <div class="flex gap-3 pt-2">
+                  <a href="https://fifthpillarvit.vercel.app" target="_blank"
+                    class="launch-app-btn px-4 py-2 rounded-xl font-bold text-xs">Launch App <i
+                      class="fa-solid fa-arrow-up-right-from-square ml-0.5 text-[9px]"></i></a>
+                  <a href="https://github.com/zaheer-r/5thpillarVITclub" target="_blank"
+                    class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 font-bold text-xs text-white transition-all"><i
+                      class="fa-brands fa-github mr-1"></i> Repository</a>
+                </div>
+              </div>
+              <div style="transform:scale(0.8);padding-left:10%; class=" aspect-video rounded-2xl overflow-hidden border
+                border-white/10 bg-neutral-900/50 shadow-inner flex items-center justify-center md:justify-self-end
+                md:min-h-[240px]">
+                <div class="text-center p-6">
+                  <i class="fa-solid fa-scale-balanced text-primary-purple text-4xl mb-3"></i>
+                  <div class="text-xs text-white/50">5th Pillar VIT Portal Preview</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination relative mt-6 text-left"></div>
+        </div>
+      </section>
+
+      <!-- 6. TECH STACK CARD (RGB Glow Card) -->
+      <section id="skills"
+        class="rgb-glow-card lg:col-span-1 md:col-span-2 glass-card spotlight p-8 flex flex-col justify-between min-h-[320px]">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Technical Arsenal</span>
+            <i class="fa-solid fa-layer-group text-primary-pink"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold font-display text-white mb-6">Core Tech Stack</h3>
+
+          <!-- Badges Grid with colored backdrops -->
+          <div class="flex flex-wrap gap-3">
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500/10 border border-orange-500/25 text-orange-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-python"></i> Python
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-500/10 border border-yellow-500/25 text-yellow-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-js"></i> JavaScript
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500/10 border border-red-500/25 text-red-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-html5"></i> HTML
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/25 text-blue-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-css3-alt"></i> CSS
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-pink-500/10 border border-pink-500/25 text-pink-400 font-medium hover:scale-105 transition-all duration-300">
+              <span class="text-xs font-bold font-display">C</span> C Language
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-solid fa-database"></i> SQL
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-white font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-github"></i> GitHub
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600/10 border border-red-600/20 text-red-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-brands fa-git-alt"></i> Git
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-500/10 border border-violet-500/25 text-violet-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-solid fa-code"></i> Developer
+            </div>
+            <div
+              class="tech-badge flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-500/10 border border-purple-500/25 text-purple-400 font-medium hover:scale-105 transition-all duration-300">
+              <i class="fa-solid fa-magnifying-glass-chart"></i> Analyst
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-text-secondary mt-6">Core system stacks configured for optimized software deployment and
+          local automation pipelines.</p>
+      </section>
+
+      <!-- 7. CURRENT FOCUS CARD (Orange progress indicators) -->
+      <div id="focus-progress-card"
+        class="lg:col-span-1 md:col-span-1 glass-card spotlight p-6 flex flex-col justify-between min-h-[320px]">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Active Focus</span>
+            <i class="fa-solid fa-graduation-cap text-primary-purple"></i>
+          </div>
+
+          <h3 class="text-lg font-bold font-display text-white mb-4">Current Focus</h3>
+
+          <!-- Progress bars filled with orange color -->
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>Developer</span>
+                <span>40%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 40%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>Data Science</span>
+                <span>60%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 60%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>Mathematics</span>
+                <span>80%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 80%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>AI Agents</span>
+                <span>70%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 70%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>Python</span>
+                <span>50%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 50%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>HTML / CSS</span>
+                <span>100%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-primary-orange/20">
+                <div class="h-full bg-primary-orange shadow-[0_0_8px_rgba(255,61,0,0.5)]" style="width: 100%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>JavaScript</span>
+                <span>50%</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange" style="width: 50%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span>Machine Learning</span>
+                <span class="text-xs text-primary-orange font-medium animate-pulse">In Progress</span>
+              </div>
+              <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-primary-orange animate-pulse" style="width: 35%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. ARTICLES CARD (Single Box Layout) -->
+      <section id="articles"
+        class="lg:col-span-1 glass-card spotlight rgb-glow-card p-8 flex flex-col justify-between min-h-[340px]">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold block mb-1">Knowledge
+              Hub</span>
+            <h3 class="text-2xl font-bold font-display text-white">Articles &amp; Blogs</h3>
+          </div>
+          <i class="fa-solid fa-feather-pointed text-primary-orange text-lg"></i>
+        </div>
+
+        <!-- Single Article Box -->
+        <div class="w-full">
+          <article
+            class="p-6 rounded-2xl bg-white/3 border border-white/5 flex flex-col md:flex-row gap-8 items-center justify-between group">
+            <!-- Left blurred bg image thumbnail with sharp clear logo -->
+            <div class="w-full md:w-1/3 article-thumb-container">
+              <div class="article-thumb-bg"></div>
+              <div class="article-thumb-logo">
+                <div class="article-logo-box">
+                  <span class="text-2xl font-extrabold text-primary-pink font-display">ZR</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right details -->
+            <div class="w-full md:w-2/3 space-y-4">
+              <span
+                class="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-text-secondary">Core
+                Concepts</span>
+              <h4 class="text-2xl font-bold text-white group-hover:text-primary-pink transition-colors font-display">
+                Software Engineering &amp; Computational Notes</h4>
+              <p class="text-text-secondary text-sm leading-relaxed">
+                Explore a consolidated series of computational engineering articles, automation scripts documentations,
+                algorithms study notes, and core coding principles. Redirecting to the central articles repository hub.
+              </p>
+              <!-- Only the Read More link has the actual href redirect -->
+              <div class="pt-2">
+                <a href="https://zaheerrachakulaarticles.com" target="_blank"
+                  class="inline-flex items-center gap-2 py-2.5 px-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all font-bold text-xs text-white">
+                  Read More <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 9. TICTACTOE GAME CARD -->
+      <section id="game-card"
+        class="lg:col-span-1 md:col-span-1 glass-card spotlight rgb-glow-card p-6 flex flex-col justify-between min-h-[360px]">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Free Game</span>
+          <i class="fa-solid fa-gamepad text-primary-purple"></i>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-2xl font-bold font-display text-white">Tic Tac Toe</h3>
+            <p class="text-text-secondary text-sm mt-2">Beat the bot. You are <span
+                class="text-primary-orange font-semibold">X</span>, the bot is <span
+                class="text-primary-pink font-semibold">O</span>.</p>
+          </div>
+
+          <div id="tic-status" class="showcase-status-tag is-picked">Your turn: X</div>
+
+          <div id="tic-board" class="tic-board" aria-label="Tic Tac Toe board">
+            <button type="button" class="tic-cell" data-tic-cell="0" aria-label="Cell 1"></button>
+            <button type="button" class="tic-cell" data-tic-cell="1" aria-label="Cell 2"></button>
+            <button type="button" class="tic-cell" data-tic-cell="2" aria-label="Cell 3"></button>
+            <button type="button" class="tic-cell" data-tic-cell="3" aria-label="Cell 4"></button>
+            <button type="button" class="tic-cell" data-tic-cell="4" aria-label="Cell 5"></button>
+            <button type="button" class="tic-cell" data-tic-cell="5" aria-label="Cell 6"></button>
+            <button type="button" class="tic-cell" data-tic-cell="6" aria-label="Cell 7"></button>
+            <button type="button" class="tic-cell" data-tic-cell="7" aria-label="Cell 8"></button>
+            <button type="button" class="tic-cell" data-tic-cell="8" aria-label="Cell 9"></button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-3 mt-4">
+          <p class="text-[10px] text-text-secondary uppercase tracking-wider">Quick bot opponent</p>
+          <button id="tic-reset-btn" type="button"
+            class="px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-bold text-white transition-all">Restart</button>
+        </div>
+      </section>
+
+      <!-- 10. GSAP SHOWCASE CARD (Bottom Left - 3D SVG Geometries Playground) -->
+      <section id="showcase"
+        class="lg:col-span-1 md:col-span-1 glass-card spotlight rgb-glow-card p-8 flex flex-col justify-between min-h-[360px]">
+        <div>
+          <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Interactive Playground</span>
+
+          <!-- Typography Animation Target -->
+          <div class="my-6 space-y-1">
+            <h2 id="showcase-title" class="text-3xl md:text-4xl font-extrabold tracking-tight text-white font-display">
+              ZAHEER RACHAKULA
+            </h2>
+            <p id="showcase-subtitle"
+              class="text-lg md:text-xl font-bold bg-gradient-to-r from-primary-orange via-primary-pink to-primary-purple bg-clip-text text-transparent tracking-widest font-display">
+              PORTFOLIO
+            </p>
+          </div>
+
+          <p class="text-text-secondary text-xs mb-4">
+            Interactive Playground. Click over the desired geometry shapes below correctly when they are in dissapear to
+            trigger your catch..
+          </p>
+        </div>
+
+        <!-- Cartoon Shapes SVG Showcase Area -->
+        <div class="showcase-canvas flex items-center justify-center">
+
+          <!-- Sphere SVG -->
+          <svg id="shape-ball" class="showcase-shape-svg" width="60" height="60" viewBox="0 0 60 60">
+            <defs>
+              <radialGradient id="sphereGrad" cx="30%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#FF5722" />
+                <stop offset="50%" stop-color="#FF3D00" />
+                <stop offset="100%" stop-color="#3E0B00" />
+              </radialGradient>
+            </defs>
+            <circle cx="30" cy="30" r="28" fill="url(#sphereGrad)" />
+          </svg>
+
+          <!-- Cube SVG -->
+          <svg id="shape-cube" class="showcase-shape-svg" width="70" height="70" viewBox="0 0 80 80">
+            <defs>
+              <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D69E2E" />
+                <stop offset="100%" stop-color="#ECC94B" />
+              </linearGradient>
+              <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#B7791F" />
+                <stop offset="100%" stop-color="#744210" />
+              </linearGradient>
+              <linearGradient id="cubeRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#975A16" />
+                <stop offset="100%" stop-color="#5F370E" />
+              </linearGradient>
+            </defs>
+            <!-- Top Face -->
+            <polygon points="40,10 70,25 40,40 10,25" fill="url(#cubeTop)" />
+            <!-- Left Face -->
+            <polygon points="10,25 40,40 40,70 10,55" fill="url(#cubeLeft)" />
+            <!-- Right Face -->
+            <polygon points="40,40 70,25 70,55 40,70" fill="url(#cubeRight)" />
+          </svg>
+
+          <!-- Cone SVG -->
+          <svg id="shape-cone" class="showcase-shape-svg" width="65" height="75" viewBox="0 0 70 80">
+            <defs>
+              <linearGradient id="coneBody" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7C3AED" />
+                <stop offset="35%" stop-color="#A855F7" />
+                <stop offset="100%" stop-color="#2D0B5A" />
+              </linearGradient>
+              <radialGradient id="coneBase" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#A855F7" />
+                <stop offset="100%" stop-color="#1B003A" />
+              </radialGradient>
+            </defs>
+            <!-- Cone Body -->
+            <path d="M35,5 L10,60 A25,10 0 0,0 60,60 Z" fill="url(#coneBody)" />
+            <!-- Cone Base Ellipse -->
+            <ellipse cx="35" cy="60" rx="25" ry="10" fill="url(#coneBase)" opacity="0.8" />
+          </svg>
+
+          <!-- Prism SVG -->
+          <svg id="shape-prism" class="showcase-shape-svg" width="70" height="70" viewBox="0 0 80 80">
+            <defs>
+              <linearGradient id="prismFront" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF0066" />
+                <stop offset="100%" stop-color="#7C3AED" />
+              </linearGradient>
+              <linearGradient id="prismSide" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#E11D48" />
+                <stop offset="100%" stop-color="#4C0519" />
+              </linearGradient>
+            </defs>
+            <!-- Front Face (Triangle) -->
+            <polygon points="30,15 5,65 55,65" fill="url(#prismFront)" />
+            <!-- Side Face -->
+            <polygon points="30,15 55,65 75,50 50,5" fill="url(#prismSide)" />
+          </svg>
+
+        </div>
+      </section>
+
+      <!-- 11. CONTACT CARD (Google Form Bindings & Scroll Level Fills) -->
+      <section id="contact"
+        class="lg:col-span-1 md:col-span-1 glass-card spotlight rgb-glow-card p-8 flex flex-col justify-between min-h-[360px]">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-text-secondary font-semibold">Contact</span>
+            <i class="fa-solid fa-envelope text-primary-pink"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold font-display text-white mb-2">Let's Work Together</h3>
+          <p class="text-text-secondary text-sm mb-6">Send a message directly to my database form.</p>
+
+          <!-- Contact Form with Google Form target action -->
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label for="name" class="sr-only">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your Name"
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-primary-pink/50 focus:bg-white/10 outline-none transition-all text-sm">
+            </div>
+
+            <div>
+              <label for="email" class="sr-only">Email</label>
+              <input type="email" id="email" name="email" required placeholder="Your Email"
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-primary-pink/50 focus:bg-white/10 outline-none transition-all text-sm">
+            </div>
+
+            <div>
+              <label for="message" class="sr-only">Message</label>
+              <textarea id="message" name="message" required rows="3" placeholder="Describe your project..."
+                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-primary-pink/50 focus:bg-white/10 outline-none transition-all text-sm resize-none"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn"
+              class="scroll-fill-btn w-full py-3 px-6 rounded-xl font-bold text-xs shadow-lg flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+
+            <!-- Message States -->
+            <p id="form-status" class="text-center text-xs mt-2 hidden"></p>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-border-light py-8 bg-bg-dark text-center text-xs text-text-secondary">
+    <div class="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Zaheer Rachakula. All rights reserved.</div>
+      <div class="flex gap-6">
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Swiper.js SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Local logic script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
